@@ -5,6 +5,7 @@ import java.util.Date;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,6 +29,9 @@ public class Producto implements Serializable{
 	@Column(name = "creado_en")
 	@Temporal(TemporalType.DATE)
 	private Date creacion;
+	
+	@Transient	//Indica que el atributo no esta asociado a la DB
+	private Integer puerto;
 
 	public Long getId() {
 		return id;
@@ -59,6 +63,14 @@ public class Producto implements Serializable{
 
 	public void setCreacion(Date cracion) {
 		this.creacion = cracion;
+	}
+
+	public Integer getPuerto() {
+		return puerto;
+	}
+
+	public void setPuerto(Integer puerto) {
+		this.puerto = puerto;
 	}
 	
 }
